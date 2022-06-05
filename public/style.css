@@ -1,0 +1,15 @@
+.content {
+    text-align: center;
+    position: relative;
+}
+
+ .paper-image {
+     margin-left: auto;
+     margin-right: auto;
+    
+} 
+.paper-image img{
+   
+    width: 100%;
+ 
+}
