@@ -39,29 +39,22 @@ class App extends React.Component {
         }, () => {
             this.checkNoOfPages()
         });
-
-
     }
-
 
     checkNoOfPages = async () => {
         // assuming the page range b/w 10-20 
         for(let i=10; i<20; i++) {
             try {
-                let exists = await imageExists(`https://epaperwmimg.amarujala.com/2020/${this.validPageNoInStr(this.state.month)}/${this.validPageNoInStr(this.state.day)}/al/${this.validPageNoInStr(i)}/hdimage.jpg`)
+                let exists = await imageExists(`https://epaperwmimg.amarujala.com/${new Date().getFullYear()}/${this.validPageNoInStr(this.state.month)}/${this.validPageNoInStr(this.state.day)}/al/${this.validPageNoInStr(i)}/hdimage.jpg`);
                 if (!exists)
                     break;
                 this.setState({
                     totalPages: i
                 })
-                
             } catch (error) {
                 break;
-                
             }
-
         }
-
     }
 
     validPageNoInStr = (pageNo) => {
@@ -69,8 +62,6 @@ class App extends React.Component {
         if (strPageNo.length === 1) strPageNo = 0 + strPageNo;
         return strPageNo
     }
-
-    
 
     render() {
         return (
@@ -83,9 +74,8 @@ class App extends React.Component {
                     <div className="paper-image">
                         <img
                             ref={this.scrollRef}
-                            src={`https://epaperwmimg.amarujala.com/2020/${this.state.month}/${this.state.day}/al/${this.state.currPage}/hdimage.jpg`}
+                            src={`https://epaperwmimg.amarujala.com/${new Date().getFullYear()}/${this.state.month}/${this.state.day}/al/${this.state.currPage}/hdimage.jpg`}
                             alt="newsimage"
-                            
                             onLoad={() => this.setState({ loading: false })}
                         />
                     </div>
